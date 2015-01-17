@@ -26,6 +26,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/samsung/logands/configs/media_profiles.xml:system/etc/media_profiles.xml \
 	device/samsung/logands/configs/audio_policy.conf:system/etc/audio_policy.conf \
+	device/samsung/logands/configs/tinyucm.conf:system/etc/tinyucm.conf \
+	device/samsung/logands/configs/default_gain.conf:system/etc/default_gain.conf \
 	device/samsung/logands/configs/media_codecs.xml:system/etc/media_codecs.xml 
 
 # Prebuilt kl keymaps
@@ -40,18 +42,22 @@ PRODUCT_COPY_FILES += \
 #        device/samsung/baffinlite/MultiSIM-Toggle.apk:system/app/MultiSIM-Toggle.apk
 
 # Insecure ADBD
-#ADDITIONAL_DEFAULT_PROPERTIES += \
-#	ro.adb.secure=3 \
-#	persist.sys.root_access=3
+#ro.adb.secure=3
+ADDITIONAL_DEFAULT_PROPERTIES += \
+	ro.adb.secure=0 \
+	ro.secure=0 \
+	persist.sys.root_access=3 \
+	persist.service.adb.enable=1
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	setup_fs \
 	e2fsck \
-	mkfs.f2fs \
+	f2fstat \
 	fsck.f2fs \
-	fibmap.f2fs
-
+	fibmap.f2fs \
+	mkfs.f2fs
+		
 # Usb accessory
 PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory
@@ -60,8 +66,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \
 	audio.usb.default \
-	audio_policy_logands.hawaii \
-	audio.r_submix.default
+	audio.r_submix.default \
+	audio.primary.default
 
 # Device-specific packages
 PRODUCT_PACKAGES += \
@@ -94,7 +100,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
-
+	
 # Support for Browser's saved page feature. This allows
 # for pages saved on previous versions of the OS to be
 # viewed on the current OS.
@@ -131,6 +137,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # MTP
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
+	
+# Override phone-hdpi-512-dalvik-heap to match value on stock
+# - helps pass CTS com.squareup.okhttp.internal.spdy.Spdy3Test#tooLargeDataFrame)
+# (property override must come before included property)
+PRODUCT_PROPERTY_OVERRIDES += \
+	dalvik.vm.heapgrowthlimit=56m	
 
 # Dalvik heap config
 include frameworks/native/build/phone-hdpi-512-dalvik-heap.mk
@@ -148,3 +160,4 @@ endif
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_logands
 PRODUCT_DEVICE := logands
+PRODUCT_MODEL := GT-S7272
