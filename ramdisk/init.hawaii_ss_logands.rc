@@ -37,7 +37,9 @@ on init
 # To store widevine keybox
     symlink /data/app /factory
 	symlink /efs /factory
-	symlink /dev/block/mmcblk0p11 /dev/block/param  
+	symlink /dev/block/mmcblk0p11 /dev/block/param
+
+	mkdir /preload 0771 system system 	
 
 on post-fs-data
 # we will remap this as /storage/sdcard with the sdcard fuse tool
@@ -267,6 +269,9 @@ on boot
 
 # phone
     setprop ro.telephony.call_ring.multiple 0
+	
+# Enable dithering algorithm
+    setprop fb.force.dithering 1	
 
 # permissions for gps.
 	mkdir /data/gps 0770 gps system
@@ -520,6 +525,13 @@ on fs
 on post-fs
     chown radio system /efs
     chmod 0771 /efs
+	
+on property:persist.sys.storage_preload=1
+    mount ext4 /dev/block/mmcblk0p18 /preload nosuid nodev noatime wait ro
+    setprop storage.preload.complete 1
+
+on property:persist.sys.storage_preload=0
+    exec /system/bin/umount /preload 	
 
 on property:ro.debuggable=1
     start console
