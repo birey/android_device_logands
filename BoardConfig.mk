@@ -85,7 +85,7 @@ HWUI_COMPILE_FOR_PERF := true
 BOARD_USE_BGRA_8888 := true
 
 # Audio
-#BOARD_USES_ALSA_AUDIO := true
+BOARD_USES_ALSA_AUDIO := true
 
 # Bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
