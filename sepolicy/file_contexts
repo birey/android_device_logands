@@ -9,39 +9,21 @@
 /dev/bcm_voip_chrdev      u:object_r:audio_device:s0
 /dev/bcm_security         u:object_r:radio_device:s0
 /dev/v3d                  u:object_r:powervr_device:s0
-#/dev/pmem                u:object_r:powervr_device:s0
-#/dev/bralloc_mem         u:object_r:powervr_device:s0
-#/dev/ion                 u:object_r:graphics_device:s0
-
-#/dev/pvrsrvkm             
-#/dev/graphics/fb0        
-#/dev/video0               
-#/dev/video1               
-#/dev/video2               
-#/dev/s3c-jpg              
-#/dev/s3c-mem              
-#/dev/s3c-mfc              
-#/dev/modem_ctl            
-#/dev/modem_fmt            
-#/dev/modem_rfs            
-#/dev/s3c2410_serial3      
-#/dev/block/mtdblock5      
-#/dev/mtd/mtd5ro           
-#/dev/s3c2410_serial1      
-#/dev/bcm_unicam           
-#/dev/i2c-0                
-#/dev/i2c-1                
-#/dev/i2c-2               
-#/dev/mpu                  
-#/dev/mpuirq               
-#/dev/timerirq             
-#/dev/ami_sensor           
-#/dev/bcm_isp2             
-#/dev/mm_isp2              
-#/dev/bcm_jpeg             
-#/dev/bcm_rpc		  	  
-#/dev/bcm_irpc		      
-#/dev/bcm_atc		      
-#/dev/mem		  		  
-#/dev/ttyGS0		  		  
-#/dev/snd/controlC0	  	  
+/dev/pmem                 u:object_r:powervr_device:s0
+/dev/bralloc_mem          u:object_r:powervr_device:s0
+/dev/graphics/fb0         u:object_r:graphics_device:s0   
+/dev/modem_ctl  		  u:object_r:radio_device:s0          
+/dev/modem_fmt            u:object_r:radio_device:s0 
+/dev/modem_rfs            u:object_r:radio_device:s0 
+/dev/s3c2410_serial3      u:object_r:radio_device:s0 
+/dev/s3c2410_serial1      u:object_r:gps_device:s0  
+/dev/bcm_unicam           u:object_r:camera_device:s0 
+/dev/i2c-[0-9]            u:object_r:camera_device:s0            
+/dev/bcm_isp2             u:object_r:camera_device:s0
+/dev/mm_isp2              u:object_r:camera_device:s0 
+/dev/bcm_jpeg             u:object_r:camera_device:s0 
+/dev/bcm_rpc		  	  u:object_r:radio_device:s0
+/dev/bcm_irpc		      u:object_r:radio_device:s0
+#/dev/bcm_atc
+#/dev/timerirq  
+#/dev/ami_sensor 		    	  
