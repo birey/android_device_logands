@@ -1,3 +1,6 @@
+# TODO:
+# -Maybe need copy frameworks/native/data/etc/android.hardware.bluetooth.xml
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
@@ -39,10 +42,10 @@ PRODUCT_COPY_FILES += \
 
 # Copy Apps
 #PRODUCT_COPY_FILES += \
-#        device/samsung/baffinlite/MultiSIM-Toggle.apk:system/app/MultiSIM-Toggle.apk
+# 	device/samsung/baffinlite/MultiSIM-Toggle.apk:system/app/MultiSIM-Toggle.apk
 
 # Insecure ADBD
-#ro.adb.secure=3
+# (ro.adb.secure=3)
 ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.adb.secure=0 \
 	ro.secure=0 \
@@ -51,13 +54,13 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	
 # Stagefright
 PRODUCT_PROPERTY_OVERRIDES += \
-        media.stagefright.enable-player=true \
-        media.stagefright.enable-meta=false \
-        media.stagefright.enable-scan=true \
-        media.stagefright.enable-http=true \
-        media.stagefright.enable-fma2dp=true \
-        media.stagefright.enable-aac=true \
-        media.stagefright.enable-qcp=true
+    media.stagefright.enable-player=true \
+    media.stagefright.enable-meta=false \
+    media.stagefright.enable-scan=true \
+    media.stagefright.enable-http=true \
+    media.stagefright.enable-fma2dp=true \
+    media.stagefright.enable-aac=true \
+    media.stagefright.enable-qcp=true
 
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
