@@ -105,8 +105,6 @@ ifeq ($(HOST_OS),linux)
   endif
 endif
 
-MISSING_EGL_PIXEL_FORMAT_YV12 := true
-
 # Add h/w acceleration in browser
 #ENABLE_WEBGL := true
 #WITH_JIT := true
