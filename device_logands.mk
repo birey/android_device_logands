@@ -1,6 +1,3 @@
-# TODO:
-# -Maybe need copy frameworks/native/data/etc/android.hardware.bluetooth.xml
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
@@ -23,8 +20,7 @@ PRODUCT_COPY_FILES += \
 	device/samsung/logands/ramdisk/init.bcm2166x.usb.rc:root/init.bcm2166x.usb.rc \
 	device/samsung/logands/ramdisk/init.log.rc:root/init.log.rc \
 	device/samsung/logands/ramdisk/lpm.rc:root/lpm.rc \
-	device/samsung/logands/ramdisk/ueventd.hawaii_ss_logands.rc:root/ueventd.hawaii_ss_logands.rc \
-	device/samsung/logands/ramdisk/recovery/init.recovery.hawaii_ss_logands.rc:root/init.recovery.hawaii_ss_logands.rc
+	device/samsung/logands/ramdisk/ueventd.hawaii_ss_logands.rc:root/ueventd.hawaii_ss_logands.rc
 
 PRODUCT_COPY_FILES += \
 	device/samsung/logands/configs/media_profiles.xml:system/etc/media_profiles.xml \
@@ -51,33 +47,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	ro.secure=0 \
 	persist.sys.root_access=3 \
 	persist.service.adb.enable=1
-	
-# Stagefright
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.enable-player=true \
-    media.stagefright.enable-meta=false \
-    media.stagefright.enable-scan=true \
-    media.stagefright.enable-http=true \
-    media.stagefright.enable-fma2dp=true \
-    media.stagefright.enable-aac=true \
-    media.stagefright.enable-qcp=true
-
-# Enable AAC 5.1 output
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.aac_51_output_enabled=true
-
-# Input resampling configuration
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.input.noresample=1
-
-# Audio Configuration
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.handset.mic.type=digital \
-    persist.audio.dualmic.config=endfire \
-    persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.voicerec=false \
-    persist.audio.fluence.speaker=false \
-    af.resampler.quality=4
 
 # KSM
 PRODUCT_PROPERTY_OVERRIDES += \
