@@ -23,11 +23,12 @@ PRODUCT_COPY_FILES += \
 	device/samsung/logands/ramdisk/charger:root/charger \
 	device/samsung/logands/ramdisk/ueventd.hawaii_ss_logands.rc:root/ueventd.hawaii_ss_logands.rc
 
+#device/samsung/logands/configs/tinyucm.conf:system/etc/tinyucm.conf \
+#device/samsung/logands/configs/default_gain.conf:system/etc/default_gain.conf \	
 PRODUCT_COPY_FILES += \
 	device/samsung/logands/configs/media_profiles.xml:system/etc/media_profiles.xml \
 	device/samsung/logands/configs/audio_policy.conf:system/etc/audio_policy.conf \
-	device/samsung/logands/configs/tinyucm.conf:system/etc/tinyucm.conf \
-	device/samsung/logands/configs/default_gain.conf:system/etc/default_gain.conf \
+	device/samsung/logands/configs/glconfig.xml:system/etc/gps/glconfig.xml \
 	device/samsung/logands/configs/media_codecs.xml:system/etc/media_codecs.xml 
 
 # Prebuilt kl keymaps
